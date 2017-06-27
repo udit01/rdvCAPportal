@@ -1,0 +1,42 @@
+<div class="valign-wrapper home-section ">
+
+  <div layout = "row" layout-align = "center center" class="login-card">
+
+    <form name = "loginForm">
+      <div class="login-head center">
+      Welcome!
+      </div>
+
+        <md-input-container class="md-icon-float md-block ">
+          <label>Email</label>
+          <md-icon>mail</md-icon>
+            <input md-maxlength="30" required md-no-asterisk name="email" ng-model="user.email">
+            <div ng-messages="userForm.email.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+        <md-input-container class="md-icon-float md-block">
+          <label>Password</label>
+          <md-icon>vpn_key</md-icon>
+          <input required ng-model="user.password" md-no-asterisk type="password" name = "password">
+          <div ng-messages="userForm.password.$error" role="alert">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+        <div layout = "row" layout-align = "center center">
+          <md-button value = "Submit valid inputs" ng-disabled="signup.$invalid" class="md-raised md-primary" ng-click = "signUp(user)">Login</md-button>
+        </div>
+        <div layout = "row" layout-align = "center center">
+          <md-button value = "Submit valid inputs" ng-disabled="true" class="md-raised md-primary" >Login with facebook</md-button>
+      </div>
+
+        <!-- <div layout="row" layout-sm="column" layout-align="space-around" >
+           <md-progress-circular ng-show = "isLoading" md-mode="indeterminate"></md-progress-circular>
+        </div> -->
+    </form>
+
+
+  </div>
+
+
+</div>
