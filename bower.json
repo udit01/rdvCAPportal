@@ -1,0 +1,25 @@
+{
+  "name": "rdvcap",
+  "description": "",
+  "main": "main.js",
+  "authors": [
+    "Korku02 <korkudeepak@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/udit01/rdvCAPportal",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "^1.1.4",
+    "angular-carousel": "^1.0.1",
+    "angular-route": "^1.6.4",
+    "angular-scroll": "^1.0.2",
+    "angular-scroll-animate": "^0.9.9",
+    "angular": "angularjs#^1.6.4"
+  }
+}
