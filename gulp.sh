@@ -1,17 +1,23 @@
-sudo npm install gulp
-sudo npm install gulp-util --save
-sudo npm install gulp-minify --save
-sudo npm install gulp-jshint --save
-sudo npm install gulp-rename --save
-sudo npm install gulp-concat --save
-sudo npm install gulp-uglifycss --save
-sudo npm install gulp-clean --save
-sudo npm install gulp-compass --save
-sudo npm install del --save
-sudo npm install run-sequence --save
 
-sudo gem install -n /usr/local/bin compass  --save
-sudo gem install -n /usr/local/bin sass  --save
+
+npm install gulp --save
+npm install gulp-util --save
+npm install gulp-minify --save
+npm install jshint --save
+npm install jshint-stylish --save
+npm install gulp-jshint --save
+npm install gulp-rename --save
+npm install gulp-concat --save
+npm install gulp-uglifycss --save
+npm install gulp-clean --save
+npm install gulp-compass --save
+npm install gulp-connect --save
+npm install del --save
+npm install run-sequence --save
+
+gem install --local compass
+gem install --local sass
+
 bower install angularjs  --save
 bower install angular-material  --save
 bower install angular-route  --save
