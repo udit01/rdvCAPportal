@@ -15,5 +15,21 @@
   "bugs": {
     "url": "https://github.com/udit01/rdvCAPportal/issues"
   },
-  "homepage": "https://github.com/udit01/rdvCAPportal#readme"
+  "homepage": "https://github.com/udit01/rdvCAPportal#readme",
+  "dependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-compass": "^2.1.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-minify": "^1.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglifycss": "^1.0.8",
+    "gulp-util": "^3.0.8",
+    "jshint": "^2.9.5",
+    "jshint-stylish": "^2.2.1",
+    "run-sequence": "^1.2.2"
+  }
 }
