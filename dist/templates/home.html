@@ -1,0 +1,28 @@
+<div class="right-main" ng-controller = "HomeCtrl">
+<div class=" leader-head" layout = "row" >
+  <h1>Leader board</h1>
+</div>
+<div class="leaderboard" layout = "row" md-white-frame = "1">
+  <div class="" flex = "33">
+    S.No
+  </div>
+  <div class="" flex = "33">
+    Email
+  </div>
+  <div class="" flex = "33">
+    Points
+  </div>
+</div>
+<div class="leaderboard" layout = "row" ng-repeat = "x in leaderboardData ">
+  <div class="" flex = "33">
+    {{$index +1}}
+  </div>
+  <div class="" flex = "33">
+    {{x.email}}
+  </div>
+  <div class="" flex = "33">
+    {{x.points}}
+  </div>
+</div>
+
+</div>

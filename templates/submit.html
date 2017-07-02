@@ -1,0 +1,29 @@
+<div class="" ng-controller = "SubmitCtrl">
+  <form name="submissionForm"  >
+  <div class="submit-form" layout = "row">
+    <h1>Submit Task</h1>
+  </div>
+  <div  layout = "row" class="">
+
+      <md-input-container class="md-block" flex = "25">
+          <label>Post Id</label>
+          <input required md-no-asterisk name="post_id" ng-model="task.post_id">
+          <div ng-messages="submissionForm.post_id.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex = "75">
+            <label>Post Url</label>
+            <input required md-no-asterisk name="image_url" ng-model="task.image_url">
+            <div ng-messages="submissionForm.image_url.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+        </md-input-container>
+
+  </div>
+  <div class="" layout = "row">
+    <a md-whiteframe = "2" class="btn1" ng-click = "submitTask(task)" ng-disabled="true">Submit</a>
+  </div>
+  </form>
+
+</div>

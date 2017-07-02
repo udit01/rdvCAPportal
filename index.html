@@ -5,13 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Campus Ambassador Program RDV'17</title>
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="bower_components/themify-icons/css/themify-icons.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans|Titillium+Web|Varela+Round|Lato|Montserrat|Droid+Sans" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" type="text/css">
 
   </head>
   <body ng-app="app" ng-controller="MainCtrl">
-    <div data-ng-view = ""></div>
+    <nav>
+
+    </nav>
+    <div class="main-flex" layout = "row" >
+      <div class="left-flex  " flex = "18" ng-hide = "isPath('/')">
+        <div class="center" layout = "row" >
+          <img  src={{userFullDetails.image_url}} alt="" md-whiteframe ="3">
+        </div>
+        <h3 class="">Hey,</h3>
+        <div class="" layout = "column">
+          <span class="username">{{userFullDetails.username}}</span>
+          <span class="email">{{userFullDetails.email}}</span>
+          <br>
+          <span class="username">Points: {{userFullDetails.points}}</span>
+          <img class="logo-image" src="images/RDV-logo.svg" alt="">
+
+        </div>
+
+      </div>
+      <div class="right-flex " ng-class="{'home-right':!isPath('/')}" flex-gt-sm = "100" flex = "100">
+        <nav class="nav-bar valign-wrapper" ng-hide = "isPath('/')">
+          <a class="user">Welcome</a>
+           <ul class="valign-wrapper" hide-xs hide-sm>
+             <li>
+               <md-button   class="md-primary btn" ng-href = "#!/home">Home</md-button>
+             </li>
+             <li>
+               <md-button  class="md-primary btn" ng-show = "isAdmin" ng-href = "#!/pending"> Pending Approvals</md-button>
+             </li>
+             <li>
+               <md-button   class="md-primary btn" ng-href = "#!/submit">Submit Task</md-button>
+             </li>
+             <li>
+               <md-button class="md-icon-button" ng-click = "logout()">
+                 <i class="ti-power-off power-icon"></i>
+                   <md-tooltip md-direction="bottom">Logout</md-tooltip>
+               </md-button>
+             </li>
+           </ul>
+         </nav>
+         <div data-ng-view = ""></div>
+      </div>
+    </div>
+
   </body>
   <!-- scripts -->
   <script type='text/javascript' src="bower_components/angular/angular.min.js"></script>
@@ -21,6 +65,8 @@
   <script type='text/javascript' src="bower_components/angular-aria/angular-aria.min.js"></script>
   <script type='text/javascript' src="bower_components/angular-messages/angular-messages.min.js"></script>
   <script src="bower_components/angular-touch/angular-touch.js"></script>
+  <script src="bower_components/angularjs-social-login/angularjs-social-login.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hellojs/1.15.1/hello.all.min.js"></script>
   <script type='text/javascript' src="main.js"></script>
   <script type='text/javascript' src="js/cap.js"></script>
 </html>

@@ -1,49 +1,36 @@
-app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $location,Auth) {
+app.controller('HomeCtrl', function($scope, $mdToast, $document, $http, $location,socialLoginService, $window) {
+$scope.userFullDetails = JSON.parse($window.localStorage.userFullDetails);
+console.log($scope.userFullDetails);
+var access_token = $scope.userFullDetails.access_token;
 
-  $scope.isPath= function(viewLocation) {
-    return viewLocation === $location.path();
-  };
-  $scope.signUp=function (user) {
-    console.log('bhai');
-    $http({
-      url:URL_PREFIX+"api/signup/",
-      method:"POST",
+$scope.init = function(){
+
+  $http({
+      method: 'GET',
+      transformRequest: function(obj) {
+          var str = [];
+          for(var p in obj)
+          str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+          return str.join("&");
+       },
+      url: URL_PREFIX + 'api/leaderboard',
       headers:{
-        'Content-Type': 'text/html; charset=utf-8'
-      },
-      data:{
-        'email':user.email,
-        'password':user.password
-
+        'Content-Type':'application/x-www-form-urlencoded',
+        'x-access-token':$scope.userFullDetails.access_token
       }
-    }).then(function sucessCallback(response) {
-
+    }).then(function successCallback(response) {
+      $scope.leaderboardData = response.data.leaderboard;
         console.log(response);
-        // $location.path("/login");
+      }, function errorCallback(response) {
+        console.log(response);
+      });
 
-    }, function errorCallback(error) {
-      console.log(error);
-    });
-  };
-  $scope.logInUser=function (user) {
-    if (user===undefined) {
-      $mdToast.show(
-        $mdToast.simple()
-        .textContent('Please check your input field')
-        .position('bottom right')
-        .hideDelay(3000)
-      );
-    }
-    Auth.login(user).then(function(response) {
-      // $scope.userDetails = response;
-      // $location.path("/dashboard");
-      console.log(response);
-      $mdToast.show(
-        $mdToast.simple()
-        .textContent('User sucessfully logged in!')
-        .position('bottom right')
-        .hideDelay(3000)
-      );
-    });
-  };
+      
+
+
+
+
+};
+
+$scope.init();
 });
