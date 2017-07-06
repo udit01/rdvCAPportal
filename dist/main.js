@@ -1,6 +1,6 @@
 var app = angular.module('app', ['ngMaterial','ngAnimate','ngRoute','socialLogin']);
 
-var URL_PREFIX = 'http://localhost:8080/';
+var URL_PREFIX = 'http://rdv-iitd.com/api/cap/';
 
 var RDV_APP_ID="1908623399418269";
 

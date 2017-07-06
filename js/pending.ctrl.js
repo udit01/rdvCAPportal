@@ -38,7 +38,7 @@ $scope.submitPending = function(data){
          'points':data.allot_points,
          'submission_id':data.uuid
        },
-      url: URL_PREFIX + 'api/approve',
+      url: URL_PREFIX + 'approve',
       headers:{
         'Content-Type':'application/x-www-form-urlencoded',
         'x-access-token':$scope.userFullDetails.access_token

@@ -13,7 +13,7 @@ $scope.init = function(){
           str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
           return str.join("&");
        },
-      url: URL_PREFIX + 'api/leaderboard',
+      url: URL_PREFIX + 'leaderboard',
       headers:{
         'Content-Type':'application/x-www-form-urlencoded',
         'x-access-token':$scope.userFullDetails.access_token
@@ -25,7 +25,7 @@ $scope.init = function(){
         console.log(response);
       });
 
-      
+
 
 
 

@@ -13,7 +13,7 @@ $scope.init = function(){
           str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
           return str.join("&");
        },
-      url: URL_PREFIX + 'api/leaderboard',
+      url: URL_PREFIX + 'leaderboard',
       headers:{
         'Content-Type':'application/x-www-form-urlencoded',
         'x-access-token':$scope.userFullDetails.access_token
@@ -25,7 +25,7 @@ $scope.init = function(){
         console.log(response);
       });
 
-      
+
 
 
 
@@ -37,7 +37,8 @@ $scope.init();
 
 app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $location,socialLoginService, $window,$rootScope) {
   $scope.isAdmin = false;
-
+  $scope.isLogin = false;
+  $scope.isFbSignup = true;
   $rootScope.isPath= function(viewLocation) {
     return viewLocation === $location.path();
   };
@@ -69,7 +70,9 @@ app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $locatio
 
 
     $scope.login = function(token){
-      if($window.localStorage.userDetails ==null && $window.localStorage.userFullDetails){
+      $scope.isLogin = true;
+      console.log($scope.isLogin);
+      if($window.localStorage.userDetails ==null && $window.localStorage.userFullDetails ==null){
         $mdToast.show(
           $mdToast.simple()
           .textContent('Please First Signup through Facebook')
@@ -78,6 +81,8 @@ app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $locatio
         );
 
         }
+
+
               $http({
                   method: 'POST',
                   transformRequest: function(obj) {
@@ -86,7 +91,7 @@ app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $locatio
                       str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
                       return str.join("&");
                    },
-                  url: URL_PREFIX + 'api/auth/facebook',
+                  url: URL_PREFIX + 'auth/facebook',
                   headers:{
                     'Content-Type':'application/x-www-form-urlencoded'
                   },
@@ -94,6 +99,7 @@ app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $locatio
                       'token':token
                   }
                 }).then(function successCallback(response) {
+                  $scope.isLogin = false;
                   userFullDetails = {
                       name: response.data.user.name,
                       points: response.data.user.points,
@@ -130,10 +136,29 @@ app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $locatio
   };
 
   $scope.logout = function(){
+      // $location.path("/");
+      // $window.location.reload();
     console.log($window.localStorage);
-    $window.localStorage.clear();
+    $window.localStorage.userDetails = null;
+    $window.localStorage.userFullDetails = null;
+    // console.log('hello');
+
+    console.log('deepak');
+    $window.location.reload();
     $location.path("/");
-    console.log($window.localStorage);
+    // console.log($window.localStorage);
+
+
+    // localStorage.clear();
+
+
+    $mdToast.show(
+      $mdToast.simple()
+      .textContent('User logout sucessfully!')
+      .position('bottom right')
+      .hideDelay(3000)
+    );
+    $window.location.reload();
   }
 
  });
@@ -178,7 +203,7 @@ $scope.submitPending = function(data){
          'points':data.allot_points,
          'submission_id':data.uuid
        },
-      url: URL_PREFIX + 'api/approve',
+      url: URL_PREFIX + 'approve',
       headers:{
         'Content-Type':'application/x-www-form-urlencoded',
         'x-access-token':$scope.userFullDetails.access_token
@@ -214,7 +239,7 @@ $scope.submitTask = function (task) {
          'post_id':task.post_id,
          'image_url':task.image_url
        },
-      url: URL_PREFIX + 'api/submit',
+      url: URL_PREFIX + 'submit',
       headers:{
         'Content-Type':'application/x-www-form-urlencoded',
         'x-access-token':$scope.userFullDetails.access_token

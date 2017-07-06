@@ -15,7 +15,7 @@ $scope.submitTask = function (task) {
          'post_id':task.post_id,
          'image_url':task.image_url
        },
-      url: URL_PREFIX + 'api/submit',
+      url: URL_PREFIX + 'submit',
       headers:{
         'Content-Type':'application/x-www-form-urlencoded',
         'x-access-token':$scope.userFullDetails.access_token
