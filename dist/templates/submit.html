@@ -1,11 +1,11 @@
-<div class="" ng-controller = "SubmitCtrl">
+<div class="right-main" ng-controller = "SubmitCtrl" >
   <form name="submissionForm"  >
   <div class="submit-form" layout = "row">
-    <h1>Submit Task</h1>
+    <h1>Tasks</h1>
   </div>
-  <div  layout = "row" class="">
+  <div  layout = "row" class="tasks-head" md-whiteframe = "1" >
 
-      <md-input-container class="md-block" flex = "25">
+      <!-- <md-input-container class="md-block" flex = "25">
           <label>Post Id</label>
           <input required md-no-asterisk name="post_id" ng-model="task.post_id">
           <div ng-messages="submissionForm.post_id.$error">
@@ -18,12 +18,48 @@
             <div ng-messages="submissionForm.image_url.$error">
               <div ng-message="required">This is required.</div>
             </div>
-        </md-input-container>
+        </md-input-container> -->
+
+  <div class="" flex = "5">
+    ID
+  </div>
+  <div class="" flex = "25">
+    Task Name
+  </div>
+  <div class="" flex = "65">
+    Details
+  </div>
+  <div class="" flex = "15">
+    Image
+  </div>
+  <div class="" flex = "15">
+    Submit
+  </div>
+
+
 
   </div>
-  <div class="" layout = "row">
-    <a md-whiteframe = "2" class="btn1" ng-click = "submitTask(task)" ng-disabled="true">Submit</a>
+  <div class="tasks-main" ng-repeat = "task in taskData" layout = "row" md-whiteframe = "1">
+
+    <div class="" flex = "5">
+      {{task.task_id}}
+    </div>
+    <div class="" flex = "25">
+      {{task.name}}
+    </div>
+    <div class="" flex = "55">
+      {{task.detail}}
+    </div>
+    <div class="" flex = "15">
+      <img md-whiteframe = "2" src={{task.image_url}} alt="">
+    </div>
+    <div class="valign-wrapper" flex = "15">
+      <a md-whiteframe = "2" ng-click = "showAdvanced($event, task.task_id)" class="btn1" ng-disabled="true">Submit</a>
+    </div>
   </div>
+  <!-- <div class="" layout = "row">
+    <a md-whiteframe = "2" class="btn1" ng-click = "submitTask(task)" ng-disabled="true">Submit</a>
+  </div> -->
   </form>
 
 </div>

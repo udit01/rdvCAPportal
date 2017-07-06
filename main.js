@@ -1,6 +1,7 @@
 var app = angular.module('app', ['ngMaterial','ngAnimate','ngRoute','socialLogin']);
 
 var URL_PREFIX = 'http://rdv-iitd.com/api/cap/';
+// var URL_PREFIX = 'http://10.194.22.16:8080/api/cap/';
 
 var RDV_APP_ID="1908623399418269";
 
@@ -21,6 +22,9 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
   }).when("/pending", {
     controller: "PendingCtrl",
     templateUrl: "templates/pending.html"
+  }).when("/submissions", {
+    controller: "SubmissionCtrl",
+    templateUrl: "templates/submissions.html"
   }).otherwise({
     controller: "MainCtrl",
     templateUrl: "templates/error.html"

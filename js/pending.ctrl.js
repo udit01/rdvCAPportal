@@ -1,6 +1,6 @@
 app.controller('PendingCtrl', function($scope, $mdToast, $document, $http, $location,socialLoginService, $window) {
 
-
+$scope.isSubmit = true;
 $scope.init = function() {
   $http({
       method: 'GET',
@@ -10,7 +10,7 @@ $scope.init = function() {
           str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
           return str.join("&");
        },
-      url: URL_PREFIX + 'api/approve',
+      url: URL_PREFIX + 'approve',
       headers:{
         'Content-Type':'application/x-www-form-urlencoded',
         'x-access-token':$scope.userFullDetails.access_token
@@ -51,8 +51,19 @@ $scope.submitPending = function(data){
           .hideDelay(5000)
           .position('right bottom')
         );
+        $scope.isSubmit = false;
+        data.allot_points = '';
+
       }, function errorCallback(response) {
         console.log(response);
+        $mdToast.show(
+          $mdToast.simple()
+            .textContent(response.data.message)
+            .hideDelay(5000)
+            .position('right bottom')
+          );
       });
+
+      // $window.location.reload();
 }
 });

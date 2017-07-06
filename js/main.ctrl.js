@@ -1,12 +1,11 @@
 app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $location,socialLoginService, $window,$rootScope) {
-  $scope.isAdmin = false;
-  $scope.isLogin = false;
+
   $scope.isFbSignup = true;
   $rootScope.isPath= function(viewLocation) {
     return viewLocation === $location.path();
   };
-
-  if($rootScope.isPath('/')===true && $scope.userFullDetails !=undefined){
+  $rootScope.logout = false;
+  if($rootScope.isPath('/')===true && $scope.userDetails !=undefined && $scope.userFullDetails !=undefined && $rootScope.logout===false){
     $location.path("/home");
 
 
@@ -79,6 +78,8 @@ app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $locatio
                     $window.localStorage.userFullDetails = JSON.stringify(userFullDetails);
 
                     $location.path("/home");
+
+
                     $window.location.reload();
                     console.log(response);
                   }, function errorCallback(response) {
@@ -92,23 +93,41 @@ app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $locatio
     if($window.localStorage.userFullDetails !=null){
     $scope.userFullDetails = JSON.parse($window.localStorage.userFullDetails);
 
-    if($window.localStorage.userFullDetails.type = "admin"){
-      $scope.isAdmin = true;
-    }
+    };
 
-  };
+    // if($scope.userFullDetails.type == 'admin'){
+    //   $scope.isLogin = true;
+    // }
+    // else if ($scope.userFullDetails.type == 'god') {
+    //   $scope.isLogin = true;
+    // }
+    // else {
+    //   $scope.isLogin = true;
+    // }
 
-  $scope.logout = function(){
+    $scope.checkTypes = function (type) {
+      if(type == 'admin' || type == 'god'){
+        return true;
+      }
+      else {
+        return false;
+      }
+
+    };
+
+  $rootScope.logout = function(){
       // $location.path("/");
       // $window.location.reload();
-    console.log($window.localStorage);
-    $window.localStorage.userDetails = null;
-    $window.localStorage.userFullDetails = null;
-    // console.log('hello');
-
-    console.log('deepak');
-    $window.location.reload();
+    // console.log($window.localStorage);
+    // $window.localStorage.userDetails = null;
+    // $window.localStorage.userFullDetails = null;
+    // // console.log('hello');
+    //
+    // console.log('deepak');
+    // $window.location.reload();
+    $rootScope.logout=true;
     $location.path("/");
+    localStorage.clear();
     // console.log($window.localStorage);
 
 

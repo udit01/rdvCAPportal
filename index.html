@@ -16,39 +16,43 @@
 
     </nav>
     <div class="main-flex" layout = "row" >
-      <div class="left-flex  " flex = "18" ng-hide = "isPath('/')">
+      <div class="left-flex  " flex = "18" ng-hide = "isPath('/')" md-whiteframe = "2">
         <div class="center" layout = "row" >
           <img  src={{userFullDetails.image_url}} alt="" md-whiteframe ="3">
         </div>
         <h3 class="">Hey,</h3>
         <div class="" layout = "column">
-          <span class="username">{{userFullDetails.username}}</span>
+          <span class="username">{{userFullDetails.name}}</span>
+          <br>
           <span class="email">{{userFullDetails.email}}</span>
           <br>
-          <span class="username">Points: {{userFullDetails.points}}</span>
+          <span class="email">Points: {{userFullDetails.points}}</span>
           <img class="logo-image" src="images/RDV-logo.svg" alt="">
 
         </div>
 
       </div>
       <div class="right-flex " ng-class="{'home-right':!isPath('/')}" flex-gt-sm = "100" flex = "100">
-        <nav class="nav-bar valign-wrapper" ng-hide = "isPath('/')">
+        <nav class="nav-bar valign-wrapper" ng-hide = "isPath('/')" md-whiteframe = "2">
           <a class="user">Welcome</a>
            <ul class="valign-wrapper" hide-xs hide-sm>
              <li>
                <md-button   class="md-primary btn" ng-href = "#!/home">Home</md-button>
              </li>
              <li>
-               <md-button  class="md-primary btn" ng-show = "isAdmin" ng-href = "#!/pending"> Pending Approvals</md-button>
+               <md-button  class="md-primary btn" ng-show = "checkTypes(userFullDetails.type)" ng-href = "#!/pending"> Pending Approvals</md-button>
              </li>
              <li>
-               <md-button   class="md-primary btn" ng-href = "#!/submit">Submit Task</md-button>
+               <md-button   class="md-primary btn" ng-show = "!checkTypes(userFullDetails.type)" ng-href = "#!/submissions">Submissions</md-button>
              </li>
              <li>
-               <!-- <md-button class="md-icon-button" ng-click = "logout()">
+               <md-button   class="md-primary btn" ng-show = "!checkTypes(userFullDetails.type)" ng-href = "#!/submit">Tasks</md-button>
+             </li>
+             <li>
+               <md-button class="md-icon-button" ng-click = "logout()">
                  <i class="ti-power-off power-icon"></i>
                    <md-tooltip md-direction="bottom">Logout</md-tooltip>
-               </md-button> -->
+               </md-button>
              </li>
            </ul>
          </nav>
