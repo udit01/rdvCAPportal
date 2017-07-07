@@ -81,9 +81,21 @@ app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $locatio
 
 
                     $window.location.reload();
+                    $mdToast.show(
+                      $mdToast.simple()
+                      .textContent('Succesfully Logged In')
+                      .position('bottom right')
+                      .hideDelay(3000)
+                    );
                     console.log(response);
                   }, function errorCallback(response) {
                     console.log(response);
+                    $mdToast.show(
+                      $mdToast.simple()
+                      .textContent('Unauthorized User Please Send Your id to rdv17publicity@gmail.com')
+                      .position('bottom right')
+                      .hideDelay(3000)
+                    );
                   });
 
 
