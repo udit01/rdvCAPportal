@@ -1,4 +1,4 @@
-app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $location,socialLoginService, $window,$rootScope) {
+app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $location,socialLoginService, $window,$rootScope,$mdSidenav) {
 
   $scope.isFbSignup = true;
   $rootScope.isPath= function(viewLocation) {
@@ -30,6 +30,11 @@ app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $locatio
 
     $scope.userDetails = JSON.parse($window.localStorage.userDetails);
       }
+
+      if($window.localStorage.userFullDetails !=null){
+
+      $scope.userFullDetails = JSON.parse($window.localStorage.userFullDetails);
+        }
 
 
     $scope.login = function(){
@@ -67,7 +72,7 @@ app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $locatio
                   $scope.isLogin = false;
                   userFullDetails = {
                       name: response.data.user.name,
-                      points: response.data.user.points,
+                      points: Math.floor(response.data.user.points/1000000000000000),
                       email: response.data.user.email,
                       image_url:response.data.user.image_url,
                       name:response.data.user.name,
@@ -113,7 +118,7 @@ app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $locatio
 
 
     if($window.localStorage.userFullDetails !=null){
-    $scope.userFullDetails = JSON.parse($window.localStorage.userFullDetails);
+    $rootScope.userFullDetails = JSON.parse($window.localStorage.userFullDetails);
 
     };
 
@@ -129,6 +134,16 @@ app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $locatio
 
     $scope.checkTypes = function (type) {
       if(type == 'admin' || type == 'god'){
+        return true;
+      }
+      else {
+        return false;
+      }
+
+    };
+
+    $scope.checkGod = function (type) {
+      if(type == 'god'){
         return true;
       }
       else {
@@ -161,5 +176,54 @@ app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $locatio
   };
 
   $rootScope.makeLogout();
+
+
+  $scope.toggleLeft = buildToggler('left');
+      $scope.toggleRight = buildToggler('right');
+
+      function buildToggler(componentId) {
+        return function() {
+          $mdSidenav(componentId).toggle();
+        };
+      };
+
+
+$scope.userProfile = function(){
+  console.log("korkudeepak");
+  console.log($scope.userFullDetails.access_token);
+  console.log("korku");
+  $http({
+      method: 'GET',
+      transformRequest: function(obj) {
+          var str = [];
+          for(var p in obj)
+          str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+          return str.join("&");
+       },
+      url: URL_PREFIX + 'profile',
+      headers:{
+        'Content-Type':'application/x-www-form-urlencoded',
+        'x-access-token':$scope.userFullDetails.access_token
+      }
+    }).then(function successCallback(response) {
+        $scope.userProfile = response.data.user;
+        console.log(response);
+
+        console.log(response);
+      }, function errorCallback(response) {
+        console.log(response);
+        $mdToast.show(
+          $mdToast.simple()
+          .textContent('Something went wrong')
+          .position('bottom right')
+          .hideDelay(3000)
+        );
+      });
+
+};
+
+  $scope.userProfile();
+
+
 
  });

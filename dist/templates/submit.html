@@ -3,6 +3,10 @@
   <div class="submit-form" layout = "row">
     <h1>Tasks</h1>
   </div>
+  <div class="" layout = "row">
+    <a md-whiteframe = "2" ng-show = "checkGod(userFullDetails.type)"ng-click = "createDialog($event)" class="btn1" >Create Task</a>
+  </div>
+  <div class="tables-container">
   <div  layout = "row" class="tasks-head" md-whiteframe = "1" >
 
       <!-- <md-input-container class="md-block" flex = "25">
@@ -33,7 +37,7 @@
     Image
   </div>
   <div class="" flex = "15">
-    Submit
+    Action
   </div>
 
 
@@ -47,19 +51,21 @@
     <div class="" flex = "25">
       {{task.name}}
     </div>
-    <div class="" flex = "55">
+    <div class="" flex = "65">
       {{task.detail}}
     </div>
     <div class="" flex = "15">
       <img md-whiteframe = "2" src={{task.image_url}} alt="">
     </div>
-    <div class="valign-wrapper" flex = "15">
-      <a md-whiteframe = "2" ng-click = "showAdvanced($event, task.task_id)" class="btn1" ng-disabled="true">Submit</a>
+    <div class="valign-wrapper" flex = "15" layout = "column">
+      <a md-whiteframe = "2" ng-show = "!checkTypes(userFullDetails.type)"ng-click = "showAdvanced($event, task.task_id,'submitDialog')" class="btn1" >Submit</a>
+      <a md-whiteframe = "2" ng-show = "checkGod(userFullDetails.type)"ng-click = "showAdvanced($event, task.task_id,'updateDialog')" class="btn1" >Update</a>
+      <a md-whiteframe = "2" ng-show = "checkGod(userFullDetails.type)" ng-click = "showAdvanced($event, task.task_id,'deleteDialog')" class="btn1" >Delete</a>
     </div>
   </div>
   <!-- <div class="" layout = "row">
     <a md-whiteframe = "2" class="btn1" ng-click = "submitTask(task)" ng-disabled="true">Submit</a>
   </div> -->
   </form>
-
+</div>
 </div>

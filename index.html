@@ -12,28 +12,30 @@
 
   </head>
   <body ng-app="app" ng-controller="MainCtrl">
-    <nav>
 
-    </nav>
     <div class="main-flex" layout = "row" >
-      <div class="left-flex  " flex = "18" ng-hide = "isPath('/')" md-whiteframe = "2">
+      <div class="left-flex  " flex = "18" ng-hide = "isPath('/')" md-whiteframe = "2" hide-xs hide-sm>
         <div class="center" layout = "row" >
           <img  src={{userFullDetails.image_url}} alt="" md-whiteframe ="3">
         </div>
         <h3 class="">Hey,</h3>
         <div class="" layout = "column">
-          <span class="username">{{userFullDetails.name}}</span>
+          <span class="username">{{userProfile.name}}</span>
           <br>
-          <span class="email">{{userFullDetails.email}}</span>
+          <span class="email">{{userProfile.college}}</span>
           <br>
-          <span class="email">Points: {{userFullDetails.points}}</span>
+          <span class="email">{{userProfile.email}}</span>
+          <br>
+          <span ng-show = "!checkTypes(userFullDetails.type)" class="email">Points: {{userProfile.points/1000000000000000 | number:0}}</span>
           <img class="logo-image" src="images/RDV-logo.svg" alt="">
 
         </div>
 
       </div>
       <div class="right-flex " ng-class="{'home-right':!isPath('/')}" flex-gt-sm = "100" flex = "100">
+
         <nav class="nav-bar valign-wrapper" ng-hide = "isPath('/')" md-whiteframe = "2">
+          <i class="ti-menu nav-icon" ng-click="toggleLeft()" hide-gt-sm></i>
           <a class="user">Welcome</a>
            <ul class="valign-wrapper" hide-xs hide-sm>
              <li>
@@ -46,7 +48,7 @@
                <md-button   class="md-primary btn" ng-show = "!checkTypes(userFullDetails.type)" ng-href = "#!/submissions">Submissions</md-button>
              </li>
              <li>
-               <md-button   class="md-primary btn" ng-show = "!checkTypes(userFullDetails.type)" ng-href = "#!/submit">Tasks</md-button>
+               <md-button   class="md-primary btn"  ng-href = "#!/submit">Tasks</md-button>
              </li>
              <li>
                <md-button class="md-icon-button" ng-click = "logout()">
@@ -59,7 +61,52 @@
          <div data-ng-view = ""></div>
       </div>
     </div>
+    <!-- side nav code -->
+    <md-sidenav class="md-sidenav-right sidenav" ng-hide = "isPath('/')" md-component-id="left" md-whiteframe="4">
+      <!-- <div class="left-flex" flex-gt-sm = "18"  hide-xs hide-sm>
+        <div class=" left-head">
+          <a class="logo"><img src = "images/logo.png"></a>
+        </div>
+        <div class="left-main">
+          <ul>
+            <li><a  ng-click="toggleLeft()" href="#!/dashboard">Dashboard</a></li>
+            <li><a  ng-click="toggleLeft()" href="#!/campaign">Create Campaign</a></li>
+            <li><a  ng-click="toggleLeft()" href="#!/partner">Create Partner</a></li>
 
+          </ul>
+        </div>
+      </div> -->
+      <div class="side-nav">
+        <div class="user-info center" layout = "column">
+          <img  src={{userFullDetails.image_url}} alt="" md-whiteframe ="3">
+          <h3 class="username">{{userFullDetails.name}}</h3>
+          <h3>{{userFullDetails.email}}</h3>
+          <h3>Points: {{userFullDetails.points}}</h3>
+
+
+          </div>
+        <ul class="">
+          <li>
+            <a class="" ng-click="toggleLeft()" ng-href = "#!/home">Home</a>
+          </li>
+          <li>
+            <a class="" ng-click="toggleLeft()" ng-show = "checkTypes(userFullDetails.type)" ng-href = "#!/pending">Pending Approvals</a>
+          </li>
+          <li>
+            <a class="" ng-click="toggleLeft()" ng-show = "!checkTypes(userFullDetails.type)" ng-href = "#!/submissions">Submissions</a>
+          </li>
+          <li>
+            <a class="" ng-click="toggleLeft()" ng-show = "!checkTypes(userFullDetails.type)" ng-href = "#!/submit">Tasks</a>
+          </li>
+          <li>
+            <a class="" ng-click = "logout(); toggleLeft()">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    </md-sidenav>
+
+    <!-- side nav code ends here -->
   </body>
   <!-- scripts -->
   <script type='text/javascript' src="bower_components/angular/angular.min.js"></script>

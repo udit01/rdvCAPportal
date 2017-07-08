@@ -2,6 +2,7 @@
 <div class=" leader-head" layout = "row" >
   <h1>My submissions</h1>
 </div>
+<div class="tables-container">
 <div class="leaderboard" layout = "row" md-white-frame = "1" md-whiteframe = "1">
   <div class="" flex = "10">
     S.No
@@ -28,18 +29,18 @@
     {{x.task_id}}
   </div>
   <div class="valign-wrapper" flex = "50">
-    <a href = {{url}}>{{url}}</a>
+    <a href = {{x.url}}>{{x.url}}</a>
   </div>
   <div class="valign-wrapper" flex = "15">
     {{x.points}}
   </div>
   <div class="valign-wrapper" flex = "10" layout-align = "center">
-    <span ng-class="{'not-checked':x.is_checked===0}" ng-class="checked">
-
+    <span ng-class="{'checked':!x.is_checked==0}" class="not-checked">
+      
     </span>
 
   </div>
 
 </div>
-
+</div>
 </div>

@@ -64,6 +64,6 @@ $scope.submitPending = function(data){
           );
       });
 
-      // $window.location.reload();
+      
 }
 });

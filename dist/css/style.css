@@ -161,7 +161,7 @@
   bottom: 10px;
   left: 0%;
   font-weight: 400;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Varela Round", sans-serif;
   color: #ffffff;
   line-height: 200%;
   font-size: 16px;
@@ -185,7 +185,7 @@
 .logo-row .logo-left span {
   font-size: 24px;
   color: #ffffff;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Varela Round", sans-serif;
   margin: 15px 0px;
 }
 .logo-row .logo-left h1 {
@@ -194,7 +194,7 @@
   text-transform: uppercase;
   color: #ffffff;
   text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.35);
-  font-family: "Open Sans", sans-serif;
+  font-family: "Varela Round", sans-serif;
 }
 @media only screen and (min-width: 600px) and (max-width: 992px) {
   .logo-row .logo-left h1 {
@@ -230,7 +230,7 @@
   color: #f3a0a7;
   background-color: #ffffff;
   border-radius: 4px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Varela Round", sans-serif;
   text-transform: uppercase;
   text-decoration: none;
   transition: box-shadow 200ms ease-out;
@@ -282,6 +282,16 @@
   padding: 10px 20px;
 }
 
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+  .home-right {
+    padding: 0;
+  }
+}
+@media only screen and (max-width: 599px) {
+  .home-right {
+    padding: 0;
+  }
+}
 .nav-bar {
   min-height: 50px;
   height: auto;
@@ -414,12 +424,35 @@
 .right-main .leaderboard {
   padding: 10px 20px;
   font-family: "Varela Round", sans-serif;
+  width: 100%;
 }
 .right-main .leaderboard img {
   height: 2.5rem;
   width: 2.5rem;
   border-radius: 50%;
   margin: 0 10px;
+}
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+  .right-main .leaderboard {
+    font-size: 14px;
+  }
+  .right-main .tasks-head {
+    width: 200%;
+  }
+  .right-main .tasks-main {
+    width: 200%;
+  }
+}
+@media only screen and (max-width: 599px) {
+  .right-main .leaderboard {
+    width: 200%;
+  }
+  .right-main .tasks-head {
+    width: 220%;
+  }
+  .right-main .tasks-main {
+    width: 220%;
+  }
 }
 .right-main .input-points {
   border-radius: 3px;
@@ -473,10 +506,26 @@
   cursor: pointer;
 }
 
+.btn3 {
+  color: #ffffff;
+  background-color: #607D8B;
+  font-family: "Varela Round", sans-serif;
+  margin: 6px 8px 6px 8px;
+  min-width: 88px;
+  border-radius: 3px;
+  font-size: 14px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+
 .submit-form h1 {
   font-size: 28px;
   font-family: "Varela Round", sans-serif;
   color: #263238;
+  padding: 5px 10px;
 }
 
 .tasks-head {
@@ -507,6 +556,9 @@
   min-height: 150px;
   padding: 15px 10px;
 }
+.submitDialog h1 {
+  font-family: "Varela Round", sans-serif;
+}
 
 .not-checked {
   height: 15px;
@@ -520,4 +572,79 @@
   width: 15px;
   border-radius: 50%;
   background-color: green;
+}
+
+.tables-container {
+  overflow-x: scroll;
+  min-width: 100%;
+}
+
+.nav-icon {
+  position: fixed;
+  top: 2.5%;
+  right: 3%;
+  font-size: 24px;
+}
+
+.user-info {
+  background: -webkit-linear-gradient(90deg, #90A4AE, #607D8B);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(90deg, #90A4AE, #607D8B);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(90deg, #90A4AE, #607D8B);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(90deg, #90a4ae, #607d8b);
+  /* Standard syntax */
+}
+.user-info img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  margin: 10px auto;
+}
+.user-info .username {
+  font-size: 1.5rem;
+}
+.user-info h3 {
+  font-family: "Varela Round", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+  color: #ECEFF1;
+}
+
+.createTask {
+  padding: 10px 20px;
+  min-width: 400px;
+}
+.createTask h1 {
+  font-family: "Varela Round", sans-serif;
+}
+
+.side-nav {
+  background: -webkit-linear-gradient(90deg, #90A4AE, #607D8B);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(90deg, #90A4AE, #607D8B);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(90deg, #90A4AE, #607D8B);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(90deg, #90a4ae, #607d8b);
+  /* Standard syntax */
+  height: 100vh;
+}
+.side-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px 20px;
+  line-height: 300%;
+  border-top: 2px solid #90A4AE;
+}
+.side-nav li {
+  font-family: "Varela Round", sans-serif;
+}
+.side-nav li a {
+  text-decoration: none;
+  font-size: 24px;
+  color: #373c46;
+  font-family: "Varela Round", sans-serif;
 }
