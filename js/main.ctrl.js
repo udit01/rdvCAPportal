@@ -12,37 +12,40 @@ app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $locatio
 
   }
 
-
   $scope.$on('event:social-sign-in-success', (event, userDetails)=> {
-  		$scope.result = userDetails;
+      $scope.result = userDetails;
       $window.localStorage.userDetails = JSON.stringify(userDetails);
       $scope.userDetails = userDetails;
 
-  		$scope.$apply();
+      $scope.login();
+      $scope.$apply();
 
 
-  	})
-  	// $scope.$on('event:social-sign-out-success', function(event, userDetails){
-  	// 	$scope.result = userDetails;
-  	// })
+
+    });
+
+
+
     if($window.localStorage.userDetails !=null){
 
     $scope.userDetails = JSON.parse($window.localStorage.userDetails);
       }
 
 
-    $scope.login = function(token){
-      $scope.isLogin = true;
+    $scope.login = function(){
+            $scope.isLogin = true;
       console.log($scope.isLogin);
-      if($window.localStorage.userDetails ==null && $window.localStorage.userFullDetails ==null){
-        $mdToast.show(
-          $mdToast.simple()
-          .textContent('Please First Signup through Facebook')
-          .position('bottom right')
-          .hideDelay(3000)
-        );
+      // if($window.localStorage.userDetails !=null){
+      //   $mdToast.show(
+      //     $mdToast.simple()
+      //     .textContent('Please First Signup through Facebook')
+      //     .position('bottom right')
+      //     .hideDelay(3000)
+      //   );
+      //
+      //   }
 
-        }
+      if($scope.userDetails !=null){
 
 
               $http({
@@ -58,7 +61,7 @@ app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $locatio
                     'Content-Type':'application/x-www-form-urlencoded'
                   },
                   data:{
-                      'token':token
+                      'token':$scope.userDetails.token
                   }
                 }).then(function successCallback(response) {
                   $scope.isLogin = false;
@@ -98,8 +101,15 @@ app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $locatio
                     );
                   });
 
+                }
+
 
     };
+
+    // if($scope.userDetails !=null){
+    //   $scope.login();
+    //   console.log("its working");
+    // }
 
 
     if($window.localStorage.userFullDetails !=null){
@@ -127,32 +137,29 @@ app.controller('MainCtrl', function($scope, $mdToast, $document, $http, $locatio
 
     };
 
+
+
+
+
+
   $rootScope.logout = function(){
-      // $location.path("/");
-      // $window.location.reload();
-    // console.log($window.localStorage);
-    // $window.localStorage.userDetails = null;
-    // $window.localStorage.userFullDetails = null;
-    // // console.log('hello');
-    //
-    // console.log('deepak');
-    // $window.location.reload();
-    $rootScope.logout=true;
-    $location.path("/");
     localStorage.clear();
-    // console.log($window.localStorage);
+    $location.path("/");
+    $scope.storageClear = true;
+    // $location.path("/");
+    console.log($scope.storageClear);
 
+  };
 
-    // localStorage.clear();
+  $rootScope.makeLogout = function(){
+    if($scope.storageClear){
 
+      console.log("it works");
+      $location.path("/");
+        console.log("it again works");
+    }
+  };
 
-    $mdToast.show(
-      $mdToast.simple()
-      .textContent('User logout sucessfully!')
-      .position('bottom right')
-      .hideDelay(3000)
-    );
-    $window.location.reload();
-  }
+  $rootScope.makeLogout();
 
  });

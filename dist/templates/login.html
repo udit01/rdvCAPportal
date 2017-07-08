@@ -1,4 +1,4 @@
-<md-progress-linear md-mode="indeterminate" ng-show = "isLogin"></md-progress-linear>
+<!-- <md-progress-linear md-mode="indeterminate" ng-show = "isLogin"></md-progress-linear> -->
   <section class="home-main" ng-controller = "MainCtrl">
   <div class="logo-row  " layout = "row" layout-wrap layout-xs = "column">
     <div class="  logo-left"  flex = "100" flex-gt-sm = "80" layout-align = "center">
@@ -18,13 +18,13 @@
   </div>
   <div class="register-button" layout = "row" layout-align = "center">
     <div class=" center valign-wrapper" layout-align = "center" layout = "column">
-      <button class="button" fb-login  layout-align = "center">
+      <!-- <button class="button"   layout-align = "center">
         Login with facebook
         <md-tooltip md-direction="top">Firsh Sigup through Facebook</md-tooltip>
-      </button>
-      <button class="button" layout-align = "center" ng-click = "login(userDetails.token)">
-        Login
-        <md-tooltip md-direction="top">Logint after Facebook SignUp</md-tooltip>
+      </button> -->
+      <button class="button" fb-login ng-click = "login()" layout-align = "center">
+        Login with facebook
+        <md-tooltip md-direction="top">Login</md-tooltip>
       </button>
 
     </div>

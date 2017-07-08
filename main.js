@@ -35,34 +35,8 @@ app.config(function(socialProvider){
 
   socialProvider.setFbKey({appId: RDV_APP_ID, apiVersion: "v2.7"});
 });
-//
-//
-// // app.run(["$rootScope", "$location", function ($rootScope, $location) {
-// //     $rootScope.$on("$routeChangeSuccess", function (userDetails) {
-// //         // console.log(userDetails);
-// //     });
-// //     $rootScope.$on("$routeChangeError", function (event, current, previous, eventObj) {
-// //         if (eventObj.authenticated === false) {
-// //             $location.path("/");
-// //         }
-// //     });
-// // }]);
-//
-// hello.init({
-//   facebook: 1908623399418269,
-// }, {
-//   redirect_uri: 'http://localhost:7070/'
-// });
-//
-//
-// hello.on('auth.login', function (auth) {
-//   hello(auth.network).api('/me').then(function (r) {
-//     socialToken = auth.authResponse.access_token;
-//     console.log('socialToken', socialToken);
-//
-//   });
-//
-// });
+
+
 // app.factory("Auth", ["$http","$q","$window", function ($http, $q, $window) {
 //   var userDetails;
 //   function login(){
