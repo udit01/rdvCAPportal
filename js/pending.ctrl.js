@@ -53,6 +53,7 @@ $scope.submitPending = function(data){
         );
         $scope.isSubmit = false;
         data.allot_points = '';
+        $scope.init();
 
       }, function errorCallback(response) {
         console.log(response);
@@ -64,6 +65,6 @@ $scope.submitPending = function(data){
           );
       });
 
-      
+
 }
 });

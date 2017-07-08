@@ -21,8 +21,8 @@
         <h3 class="">Hey,</h3>
         <div class="" layout = "column">
           <span class="username">{{userProfile.name}}</span>
-          <br>
-          <span class="email">{{userProfile.college}}</span>
+          <br ng-show = "!checkTypes(userFullDetails.type)">
+          <span class="email" ng-show = "!checkTypes(userFullDetails.type)">{{userProfile.college}}</span>
           <br>
           <span class="email">{{userProfile.email}}</span>
           <br>
@@ -81,7 +81,8 @@
           <img  src={{userFullDetails.image_url}} alt="" md-whiteframe ="3">
           <h3 class="username">{{userFullDetails.name}}</h3>
           <h3>{{userFullDetails.email}}</h3>
-          <h3>Points: {{userFullDetails.points}}</h3>
+          <h3 ng-show = "!checkTypes(userFullDetails.type)">{{userFullDetails.college}}</h3>
+          <h3 ng-show = "!checkTypes(userFullDetails.type)">Points: {{userFullDetails.points}}</h3>
 
 
           </div>
