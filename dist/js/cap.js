@@ -21,7 +21,7 @@ $scope.init = function(){
       }
     }).then(function successCallback(response) {
       $scope.leaderboardData = response.data.leaderboard;
-      
+
         console.log(response);
       }, function errorCallback(response) {
         console.log(response);
@@ -406,7 +406,7 @@ $scope.showAdvanced = function(ev,id,type) {
       console.log($scope.task_id);
     $mdDialog.show({
       controller: DialogController,
-      templateUrl: '../templates/'+type +'.html',
+      templateUrl: 'templates/'+type +'.html',
       parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose:true,
@@ -425,7 +425,7 @@ $scope.showAdvanced = function(ev,id,type) {
 
       $mdDialog.show({
         controller: DialogController,
-        templateUrl: '../templates/createDialog.html',
+        templateUrl: 'templates/createDialog.html',
         parent: angular.element(document.body),
         targetEvent: ev,
         clickOutsideToClose:true,
@@ -562,7 +562,7 @@ $scope.showAdvanced = function(ev,id,type) {
             );
         });
   };
-  
+
   $scope.createTask = function (task) {
     console.log('korku createTask');
     $http({
